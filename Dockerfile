@@ -9,7 +9,8 @@ RUN apt-get update && \
     chmod +x ./kubectl && \
     cp kubectl /usr/local/bin
 
-RUN Rscript -e "install.packages(c('future', 'future.apply','doFuture'))"
+RUN Rscript -e "install.packages(c('future', 'future.apply','doFuture', 'data.table', 'prophet', 'forecast', 'remotes'))"
+RUN R -e 'remotes::install_github("cloudyr/AzureStor")'
 
 COPY setup-kube.R setup-kube.R
 
